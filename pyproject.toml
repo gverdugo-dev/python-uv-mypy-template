@@ -1,11 +1,7 @@
-[build-system]
-requires = ["setuptools>=61.0"]
-build-backend = "setuptools.build_meta"
-
 [project]
-name = "uv-mypy-template"
+name = "python-uv-mypy-template"
 version = "0.1.0"
-description = "Add your description here"
+description = "Simple template for Python projects using uv, mypy, ruff, and pre-commit"
 authors = [
     { name="Gonzalo Verdugo", email="verdugogarridogonzalo@gmail.com" },
 ]
@@ -45,6 +41,7 @@ exclude = [
     "dist",
     "node_modules",
     "venv",
+    "src", # Also exclude src if it exists but shouldn't be packaged
 ]
 
 # Same as Black.
