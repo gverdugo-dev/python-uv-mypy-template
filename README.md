@@ -1,4 +1,4 @@
-# uv-mypy-template
+# python-uv-mypy-template
 
 A Python project template using `uv` for package management, `ruff` for formatting/linting, `mypy` for type checking, and `unittest` for testing.
 
