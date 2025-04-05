@@ -1,0 +1,108 @@
+[build-system]
+requires = ["setuptools>=61.0"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "uv-mypy-template"
+version = "0.1.0"
+description = "Add your description here"
+authors = [
+    { name="Gonzalo Verdugo", email="verdugogarridogonzalo@gmail.com" },
+]
+readme = "README.md"
+requires-python = ">=3.12"
+dependencies = []
+
+
+[dependency-groups]
+dev = [
+    "mypy>=1.15.0",
+    "ruff>=0.11.3",
+    "pre-commit>=3.6.0",
+]
+
+[tool.ruff]
+# Exclude a variety of commonly ignored directories.
+exclude = [
+    ".bzr",
+    ".direnv",
+    ".eggs",
+    ".git",
+    ".git-rewrite",
+    ".hg",
+    ".mypy_cache",
+    ".nox",
+    ".pants.d",
+    ".pytype",
+    ".ruff_cache",
+    ".svn",
+    ".tox",
+    ".venv",
+    "__pypackages__",
+    "_build",
+    "buck-out",
+    "build",
+    "dist",
+    "node_modules",
+    "venv",
+]
+
+# Same as Black.
+line-length = 88
+
+# Assume Python 3.12
+target-version = "py312"
+
+[tool.ruff.lint]
+# Enable Pyflakes (`F`) and a subset of the pycodestyle (`E`) rules by default.
+# Extend this list with the ones you want to enable.
+select = ["E4", "E7", "E9", "F"]
+ignore = []
+
+# Allow autofix for all enabled rules (when `--fix`) is provided.
+fixable = ["ALL"]
+unfixable = []
+
+per-file-ignores = {}
+
+# Allow unused variables when underscore-prefixed.
+dummy-variable-rgx = "^(_+|(_+[a-zA-Z0-9_]*[a-zA-Z0-9]+?))$"
+
+[tool.ruff.format]
+# Like Black, use double quotes for strings.
+quote-style = "double"
+
+# Like Black, indent with spaces, rather than tabs.
+indent-style = "space"
+
+# Like Black, respect magic trailing commas.
+skip-magic-trailing-comma = false
+
+# Like Black, automatically detect the appropriate line ending.
+line-ending = "auto"
+
+[tool.mypy]
+# Specify the target Python version.
+python_version = "3.12"
+
+# Strict checks configuration
+strict = true
+warn_unreachable = true
+warn_unused_ignores = true
+# warn_return_any = true # Uncomment if you want to be warned about functions returning Any
+# warn_redundant_casts = true # Uncomment if you want to be warned about redundant casts
+disallow_untyped_defs = true
+disallow_incomplete_defs = true
+check_untyped_defs = true
+disallow_untyped_decorators = true
+# disallow_any_generics = true # Uncomment for stricter generics checks
+
+# How to handle imports
+ignore_missing_imports = true # Often needed for third-party libraries without stubs
+follow_imports = "silent" # 'normal', 'skip', 'error' are other options
+
+# Pretty output
+pretty = true
+
+# Exclude common directories
+exclude = ["venv", ".venv", "build", "dist"]

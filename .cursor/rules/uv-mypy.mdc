@@ -1,0 +1,59 @@
+---
+description:
+globs:
+alwaysApply: true
+---
+# Cursor AI Guidelines for Python Project using uv
+
+## 1. General Instructions & Language
+
+*   **Primary Language:** All code, comments, docstrings, and commit messages must be written in **English**.
+*   **AI Interaction:** After generating or modifying code, please provide a brief bullet-point summary of the changes made and the reasoning behind them.
+
+## 2. Code Style & Formatting
+
+*   **PEP 8:** Strictly adhere to [PEP 8](https://peps.python.org/pep-0008/) style guidelines.
+*   **Formatting:** Use **Ruff** for automated code formatting. Ensure it's configured (e.g., in `pyproject.toml`) and applied consistently.
+*   **Linting:** Use **Ruff** for linting to catch errors and style issues early. Ensure it's configured (e.g., in `pyproject.toml`).
+*   **Readability:**
+    *   Use clear, descriptive, and meaningful names for variables, functions, classes, and modules.
+    *   Keep functions and methods short and focused, adhering to the Single Responsibility Principle (SRP).
+    *   Avoid magic numbers or strings; define constants at the beginning of the file or in a dedicated `constants.py` module. Use uppercase names for constants (e.g., `MAX_RETRIES = 3`).
+
+## 3. Documentation
+
+*   **Docstrings:** Mandatory for all public modules, classes, methods, and functions.
+    *   **Content:** Docstrings should clearly explain *what* the code does, its parameters, and what it returns.
+    *   **Format:** Use a standard format like Google Style or reStructuredText. (Example: Google Style).
+    *   **Language:** Must be in **English**.
+*   **Comments:** Use inline comments (`#`) sparingly. They should explain the *why* behind complex or non-obvious code, not the *what*.
+
+## 4. Typing
+
+*   **Static Typing:** Mandatory use of Python's type hints (PEP 484) for function/method signatures (parameters and return types) and important variables.
+*   **Duck Typing Philosophy:** While using static type hints for clarity and tooling support, embrace Python's dynamic nature. Focus on interfaces and behavior ("duck typing") rather than relying heavily on `isinstance()` checks where protocols or well-defined interfaces suffice. Type hints should define the expected "shape" or protocol.
+
+## 5. Object-Oriented Programming (OOP)
+
+*   **Design:** Apply solid OOP principles: Encapsulation, Abstraction. Ensure classes have a clear purpose (SRP).
+*   **Inheritance vs. Composition:** Favor Composition over Inheritance where it leads to more flexible, decoupled, and maintainable designs.
+*   **Method Design:** Keep methods cohesive and focused on a single task.
+
+## 6. Testing
+
+*   **Framework:** Use Python's built-in **`unittest`** module for writing and running tests.
+*   **Generation:** When asked to generate tests, create them using the `unittest` framework structure (`unittest.TestCase` subclasses, `test_*` methods, `setUp`/`tearDown` if needed).
+*   **Coverage:** Aim for meaningful test coverage for business logic and complex functions.
+*   **Naming:** Follow standard conventions: `test_*.py` for files, `Test*` for test classes, `test_*` for test methods.
+
+## 7. Dependency Management (Context: using `uv`)
+
+*   Use `uv` for managing Python packages and virtual environments.
+*   Commands: `uv pip install`, `uv pip sync`, `uv lock`, `uv venv`, etc., interacting with `pyproject.toml`.
+
+## 8. Other Best Practices (Low Overhead)
+
+*   **DRY (Don't Repeat Yourself):** Avoid duplicating code. Refactor common logic into reusable functions, methods, or classes.
+*   **YAGNI (You Ain't Gonna Need It):** Avoid adding complexity or features until they are actually required. Keep the design simple.
+*   **Error Handling:** Use specific exception types rather than catching generic `Exception`. Handle potential errors gracefully.
+*   **Resource Management:** Use `with` statements for resources that need cleanup (files, network connections, locks).

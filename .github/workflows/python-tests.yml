@@ -1,0 +1,38 @@
+name: Python Tests
+
+on:
+  pull_request:
+    branches: [ main, develop ] # Triggers on PRs targeting main or develop
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false # Allow all matrix jobs to finish even if one fails
+      matrix:
+        # Specify Python versions to test against
+        python-version: ['3.10', '3.11', '3.12']
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+
+    - name: Set up Python ${{ matrix.python-version }} and uv
+      uses: actions/setup-python@v5
+      with:
+        python-version: ${{ matrix.python-version }}
+        # actions/setup-python@v5 includes uv installation
+        cache: 'pip' # Cache dependencies installed by uv/pip
+
+    - name: Verify uv installation
+      run: uv --version
+
+    - name: Install dependencies
+      # Assumes dependencies are locked in requirements.lock
+      # If using pyproject.toml directly: uv pip install .[dev]
+      # Adjust the command if your dependency file is different
+      run: uv sync
+
+    - name: Run tests
+      # Discovers and runs tests in the 'tests' directory
+      run: uv run python -m unittest discover tests
