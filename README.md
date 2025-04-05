@@ -40,6 +40,11 @@ This template provides a standardized starting point for new Python projects, pr
     # uv pip install -e .[dev]
     ```
 
+4.  **Install pre-commit hooks:** (Optional, but recommended for automated checks before commits)
+    ```bash
+    pre-commit install
+    ```
+
 ## Development Workflow
 
 ### Formatting
